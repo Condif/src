@@ -1,12 +1,4 @@
 module Main exposing (..)
-
--- Press buttons to increment and decrement a counter.
---
--- Read how it works:
---   https://guide.elm-lang.org/architecture/buttons.html
---
-
-
 import Browser
 import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
@@ -19,39 +11,30 @@ import Html.Events exposing (onClick)
 -- Visa nya HTML i domen
 -- Återupprepa
 
--- MAIN, Visar det i dommen genom...
+
+-- MAIN, Visar det i domen genom...
 -- Init som initiera applikationen
 -- View som visar allt i domen
 -- User inputs skickar till update funktionen
-
-
 main =
   Browser.sandbox { init = init, update = update, view = view }
 
 
-
 -- MODEL Data modeling. Alla detaljer i applikationen som data
 -- Sätter model till int och initierar model med numret 0.
-
-
 type alias Model = Int
-
 
 init : Model
 init =
   0
 
-
-
 -- UPDATE, beskriver hur vår model förändras beroende på vilka meddelanden den får.
 -- update: Msg -> Model -> Model ->, Tar msg och uppdaterar model och visar ny model i domen
-
 
 type Msg
   = Increment
   | Decrement
   | Reset
-
 
 update : Msg -> Model -> Model
 update msg model =
