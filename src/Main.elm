@@ -1,6 +1,7 @@
 module Main exposing (..)
 import Browser
-import Html exposing (Html, button, div, text)
+import Html exposing (Html, button, div, text, input)
+import String exposing (fromInt)
 import Html.Events exposing (onClick)
 
 --Hierarki, Elm arkitektur.
@@ -26,7 +27,30 @@ type alias Model = Int
 
 init : Model
 init =
-  0
+   0
+
+
+
+
+-- VIEW, Skriver ut i domen.
+-- Funktion som tar in Model som argument (data-detaljer, int i det här fallet)
+-- Output är i HTML för att skriva ut i domen
+-- view: Model -> Html Msg innebär att vi skickar view model = till update som msg typ alltså user-input typ
+
+
+view : Model -> Html Msg
+view model =
+  div []
+    [ div[] [text "Hej, fyll i ditt namn och lek med + och - samt reset!"]
+    , div [] []
+    , div [] [ input [] [] 
+    , button [] [] ]
+    , button [ onClick Decrement ] [ text "-" ]
+    , div [] [ text (String.fromInt model) ]
+    , button [ onClick Increment ] [ text "+" ]
+    , div [] []
+    , button [ onClick Reset ] [ text "Reset" ]
+    ]
 
 -- UPDATE, beskriver hur vår model förändras beroende på vilka meddelanden den får.
 -- update: Msg -> Model -> Model ->, Tar msg och uppdaterar model och visar ny model i domen
@@ -50,17 +74,3 @@ update msg model =
 
 
 
--- VIEW, Skriver ut i domen.
--- Funktion som tar in Model som argument (data-detaljer, int i det här fallet)
--- Output är i HTML för att skriva ut i domen
--- view: MOdel -> Html Msg innebär att vi skickar view model = till update som msg typ alltså user-input typ
-
-
-view : Model -> Html Msg
-view model =
-  div []
-    [ button [ onClick Decrement ] [ text "-" ]
-    , div [] [ text (String.fromInt model) ]
-    , button [ onClick Increment ] [ text "+" ]
-    , button [ onClick Reset ] [ text "Reset" ]
-    ]
