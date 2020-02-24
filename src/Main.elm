@@ -4,7 +4,7 @@ import Html exposing (Html, button, div, text, input)
 import String exposing (fromInt)
 import Html.Events exposing (onClick)
 
---Hierarki, Elm arkitektur.
+-- Elm arkitektur.
 -- Vänta på user input med exempelvis onClick
 -- Skicka ett Msg (meddelande) till update
 -- Producera en ny model
